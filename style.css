@@ -60,7 +60,7 @@ body::after {
 .logo {
   font-size: 1.1rem;
   font-weight: 800;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.02em;
 }
 
 .nav-links {
@@ -184,7 +184,15 @@ main {
   font-size: clamp(1.8rem, 4vw, 2.8rem);
 }
 
-.about-card,
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.about-main,
+.about-side,
 .contact-card {
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -193,16 +201,54 @@ main {
   backdrop-filter: blur(12px);
 }
 
-.about-card p,
-.contact-card p {
-  margin: 0 0 14px;
-  line-height: 1.8;
-  opacity: 0.92;
+.about-lead {
+  margin: 0 0 18px;
+  font-size: 1.25rem;
+  line-height: 1.6;
+  font-weight: 600;
+  opacity: 0.98;
+  max-width: 700px;
 }
 
-.about-card p:last-child,
-.contact-card p:last-child {
+.about-text {
+  margin: 0 0 16px;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+.about-text:last-child {
   margin-bottom: 0;
+}
+
+.about-side {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.about-item {
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.about-label {
+  display: inline-block;
+  margin-bottom: 8px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.65;
+}
+
+.about-item p {
+  margin: 0;
+  line-height: 1.6;
+  opacity: 0.95;
 }
 
 .project-grid {
@@ -230,8 +276,12 @@ main {
 }
 
 .project-card.featured {
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.05));
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.12),
+    rgba(255, 255, 255, 0.05)
+  );
+  border-color: rgba(103, 232, 249, 0.35);
 }
 
 .project-tag {
@@ -247,23 +297,46 @@ main {
   font-size: 1.5rem;
 }
 
-.project-card p {
-  margin: 0;
+.project-description {
+  margin: 10px 0 14px;
   line-height: 1.7;
   opacity: 0.9;
 }
 
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.project-tech span {
+  font-size: 0.82rem;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
 .project-links {
-  margin-top: 18px;
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
+  margin-top: 10px;
 }
 
 .project-links a {
   color: #67e8f9;
   text-decoration: none;
   font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.project-links a:hover {
+  opacity: 0.85;
 }
 
 .skills-wrap {
@@ -281,6 +354,16 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.12);
   font-weight: 600;
   opacity: 0.95;
+}
+
+.contact-card p {
+  margin: 0 0 14px;
+  line-height: 1.8;
+  opacity: 0.92;
+}
+
+.contact-card p:last-child {
+  margin-bottom: 0;
 }
 
 .footer {
@@ -301,7 +384,8 @@ main {
 }
 
 @media (max-width: 950px) {
-  .project-grid {
+  .project-grid,
+  .about-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -326,6 +410,10 @@ main {
 
   .hero-subtitle {
     font-size: 1rem;
+  }
+
+  .about-lead {
+    font-size: 1.08rem;
   }
 
   .btn {
